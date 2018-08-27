@@ -5,6 +5,7 @@ import { JssProvider } from 'react-jss';
 import getPageContext from './src/getPageContext';
 import { createGenerateClassName } from '@material-ui/core/styles';
 
+import Layout from './src/layout';
 import Root from './src/root';
 
 // Get the context of the page to collected side effects.
@@ -22,6 +23,10 @@ export const onRenderBody = ({ setHeadComponents }) => {
       dangerouslySetInnerHTML={{ __html: muiPageContext.sheetsRegistry.toString() }}
     />,
   ]);
+}
+
+export function wrapPageElement({ element, props }) {
+  return <Layout {...props}>{element}</Layout>;
 }
 
 // eslint-disable-next-line react/prop-types
