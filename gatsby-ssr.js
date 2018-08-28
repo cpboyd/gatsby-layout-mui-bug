@@ -9,7 +9,7 @@ import { createGenerateClassName } from '@material-ui/core/styles';
 import Layout from './src/layout';
 import Root from './src/root';
 
-const sheets = new SheetsRegistry();
+let sheets = new SheetsRegistry();
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
@@ -20,6 +20,9 @@ export const onRenderBody = ({ setHeadComponents }) => {
       dangerouslySetInnerHTML={{ __html: sheets.toString() }}
     />,
   ]);
+
+  // Re-instantiate sheets, so that it isn't reused:
+  sheets = new SheetsRegistry();
 }
 
 export function wrapPageElement({ element, props }) {
@@ -45,7 +48,3 @@ export function wrapRootElement({ element }) {
     </JssProvider>
   );
 }
-
-// exports.wrapRootElement = wrapRootElement;
-// exports.onRenderBody = onRenderBody;
-// export {wrapRootElement, onRenderBody};
