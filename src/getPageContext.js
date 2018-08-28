@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 
-import { SheetsRegistry } from 'jss';
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
@@ -27,8 +26,6 @@ function createPageContext() {
     theme,
     // This is needed in order to deduplicate the injection of CSS in the page.
     sheetsManager: new Map(),
-    // This is needed in order to inject the critical CSS.
-    sheetsRegistry: new SheetsRegistry(),
   };
 }
 
